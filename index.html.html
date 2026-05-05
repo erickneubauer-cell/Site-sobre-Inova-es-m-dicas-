@@ -1,0 +1,2470 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Apresentação — Hanseníase · 3 Apresentadores</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════
+   DESIGN DIRECTION: Editorial médico — tom claro,
+   papel creme, tipografia serif expressiva.
+   Paleta: creme + verde-teal profundo + coral vivo
+   como acento. Sem gradientes genéricos.
+═══════════════════════════════════════════════════ */
+
+:root {
+  --cream:     #FAF8F4;
+  --paper:     #F3EFE8;
+  --paper2:    #EDE8DF;
+  --ink:       #1C1A17;
+  --ink2:      #2E2B26;
+  --ink3:      #4A4640;
+  --rule:      #D8D1C4;
+  --rule2:     #EAE5DC;
+
+  /* Apresentadores */
+  --p1:        #1A4A3C;  /* verde-escuro profundo — Apresentador 1 */
+  --p1-light:  #EAF3F0;
+  --p1-mid:    #3D7A6A;
+  --p2:        #8B3A2A;  /* terracota — Apresentador 2 */
+  --p2-light:  #F7EDE9;
+  --p2-mid:    #C0614D;
+  --p3:        #1E3A6A;  /* azul-marinho — Apresentador 3 */
+  --p3-light:  #EAF0F7;
+  --p3-mid:    #3D6AAB;
+
+  --accent:    #D4401A;  /* coral vivo — alertas */
+  --gold:      #A0732A;  /* ouro suave — destaques */
+  --gold-light:#F5EDD8;
+
+  --font-serif: 'Playfair Display', 'Georgia', serif;
+  --font-body:  'Source Serif 4', 'Georgia', serif;
+  --font-mono:  'JetBrains Mono', monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--paper2); }
+::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 3px; }
+
+/* ── NAV ─────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: rgba(250,248,244,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 2.5rem;
+}
+
+.nav-brand {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--ink3);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 300;
+}
+
+.nav-links a:hover { color: var(--ink); }
+
+@media(max-width:680px){ .nav-links { display: none; } }
+
+/* ── HERO ─────────────────────────────────────── */
+.hero {
+  padding: 9rem 2.5rem 5rem;
+  max-width: 860px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--rule2);
+}
+
+.hero-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--p1-mid);
+  margin-bottom: 1.75rem;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.6rem, 5.5vw, 4.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--p1);
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--ink3);
+  max-width: 560px;
+  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  border: 1.5px solid;
+}
+
+.chip-green { border-color: var(--p1);    color: var(--p1);    background: var(--p1-light); }
+.chip-terra { border-color: var(--p2);    color: var(--p2);    background: var(--p2-light); }
+.chip-blue  { border-color: var(--p3);    color: var(--p3);    background: var(--p3-light); }
+.chip-gold  { border-color: var(--gold);  color: var(--gold);  background: var(--gold-light); }
+
+/* ── SEÇÃO GENÉRICA ─────────────────────────── */
+.section {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 4.5rem 2.5rem;
+  border-bottom: 1px solid var(--rule2);
+}
+
+.section:last-of-type { border-bottom: none; }
+
+.section-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-kicker::before {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--rule);
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.7rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.section-lead {
+  font-size: 1rem;
+  color: var(--ink3);
+  max-width: 640px;
+  font-weight: 300;
+  line-height: 1.85;
+  margin-bottom: 2.75rem;
+}
+
+/* ── APRESENTADORES — BADGES FIXOS ─────────── */
+.p-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem 0.35rem 0.55rem;
+  border-radius: 100px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1.5px solid;
+}
+
+.p-badge .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.badge-p1 { border-color: var(--p1); color: var(--p1); background: var(--p1-light); }
+.badge-p1 .dot { background: var(--p1); }
+
+.badge-p2 { border-color: var(--p2); color: var(--p2); background: var(--p2-light); }
+.badge-p2 .dot { background: var(--p2); }
+
+.badge-p3 { border-color: var(--p3); color: var(--p3); background: var(--p3-light); }
+.badge-p3 .dot { background: var(--p3); }
+
+/* ── OVERVIEW DOS 3 APRESENTADORES ─────────── */
+.presenter-overview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+@media(max-width:720px){ .presenter-overview { grid-template-columns: 1fr; } }
+
+.po-card {
+  border-radius: 14px;
+  padding: 1.75rem;
+  border: 1.5px solid;
+  position: relative;
+  overflow: hidden;
+}
+
+.po-card::after {
+  content: attr(data-letter);
+  position: absolute;
+  right: -0.5rem;
+  bottom: -1.5rem;
+  font-family: var(--font-serif);
+  font-size: 8rem;
+  font-weight: 700;
+  opacity: 0.05;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.po-card-p1 { background: var(--p1-light); border-color: rgba(26,74,60,0.2); }
+.po-card-p2 { background: var(--p2-light); border-color: rgba(139,58,42,0.2); }
+.po-card-p3 { background: var(--p3-light); border-color: rgba(30,58,106,0.2); }
+
+.po-name {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.po-p1 .po-name { color: var(--p1); }
+.po-p2 .po-name { color: var(--p2); }
+.po-p3 .po-name { color: var(--p3); }
+
+.po-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 1rem;
+}
+
+.po-slides {
+  font-size: 0.82rem;
+  color: var(--ink3);
+  margin-bottom: 0.75rem;
+  font-weight: 300;
+}
+
+.po-time {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.po-p1 .po-time { color: var(--p1); }
+.po-p2 .po-time { color: var(--p2); }
+.po-p3 .po-time { color: var(--p3); }
+
+.po-role {
+  margin-top: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--ink3);
+  line-height: 1.6;
+  font-style: italic;
+  font-weight: 300;
+}
+
+/* ── BLOCO DE APRESENTADOR ─────────────────── */
+.presenter-block {
+  margin-bottom: 3rem;
+}
+
+.pb-header {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: 14px 14px 0 0;
+  border: 1.5px solid;
+  border-bottom: none;
+}
+
+.pb-header-p1 { background: var(--p1); border-color: var(--p1); }
+.pb-header-p2 { background: var(--p2); border-color: var(--p2); }
+.pb-header-p3 { background: var(--p3); border-color: var(--p3); }
+
+.pb-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+  border: 2px solid rgba(255,255,255,0.25);
+}
+
+.pb-info { flex: 1; }
+
+.pb-name {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: white;
+  line-height: 1.2;
+}
+
+.pb-desc {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  font-weight: 300;
+  margin-top: 0.15rem;
+}
+
+.pb-stats {
+  text-align: right;
+}
+
+.pb-stat-val {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1;
+}
+
+.pb-stat-label {
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.6);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.pb-body {
+  border: 1.5px solid;
+  border-top: none;
+  border-radius: 0 0 14px 14px;
+  overflow: hidden;
+}
+
+.pb-body-p1 { border-color: rgba(26,74,60,0.25); }
+.pb-body-p2 { border-color: rgba(139,58,42,0.25); }
+.pb-body-p3 { border-color: rgba(30,58,106,0.25); }
+
+/* ── SLIDE ITEM ─────────────────────────────── */
+.slide-item {
+  padding: 2rem 1.75rem;
+  border-bottom: 1px solid var(--rule2);
+  background: white;
+  transition: background 0.15s;
+}
+
+.slide-item:last-child { border-bottom: none; }
+.slide-item:hover { background: var(--cream); }
+
+.si-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.si-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.75rem;
+  border-radius: 100px;
+  border: 1px solid;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.si-num-p1 { border-color: var(--p1-mid); color: var(--p1); background: var(--p1-light); }
+.si-num-p2 { border-color: var(--p2-mid); color: var(--p2); background: var(--p2-light); }
+.si-num-p3 { border-color: var(--p3-mid); color: var(--p3); background: var(--p3-light); }
+
+.si-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.25;
+  flex: 1;
+}
+
+.si-time {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink3);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 0.25rem 0.65rem;
+  border-radius: 100px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
+/* objetivo */
+.si-obj {
+  background: var(--paper);
+  border-left: 3px solid var(--rule);
+  padding: 0.9rem 1.1rem;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 1.25rem;
+}
+
+.si-obj-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 0.3rem;
+}
+
+.si-obj-text {
+  font-size: 0.9rem;
+  color: var(--ink2);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.si-obj-text strong { color: var(--ink); }
+
+/* por que funciona */
+.si-why {
+  padding: 0.9rem 1.1rem;
+  border-radius: 8px;
+  margin-bottom: 1.25rem;
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.si-why-p1 { background: var(--p1-light); color: var(--p1); border-left: 3px solid var(--p1-mid); border-radius: 0 8px 8px 0; }
+.si-why-p2 { background: var(--p2-light); color: var(--p2); border-left: 3px solid var(--p2-mid); border-radius: 0 8px 8px 0; }
+.si-why-p3 { background: var(--p3-light); color: var(--p3); border-left: 3px solid var(--p3-mid); border-radius: 0 8px 8px 0; }
+
+.si-why strong { font-style: normal; font-weight: 600; }
+
+/* script */
+.si-script-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.si-script-label::before {
+  content: '';
+  width: 16px;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* parágrafo de fala */
+.fala {
+  background: var(--cream);
+  border: 1.5px solid var(--rule2);
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: var(--ink2);
+  font-weight: 300;
+  position: relative;
+}
+
+.fala::before {
+  content: '❝';
+  position: absolute;
+  top: 0.6rem;
+  left: 1rem;
+  font-size: 0.85rem;
+  opacity: 0.25;
+  font-family: var(--font-serif);
+}
+
+.fala strong {
+  color: var(--ink);
+  font-weight: 600;
+  background: rgba(255,220,100,0.35);
+  padding: 0 0.15em;
+  border-radius: 2px;
+}
+
+.fala em {
+  color: var(--accent);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.fala .pause {
+  display: inline-block;
+  margin: 0 0.15em;
+  padding: 0.05em 0.45em;
+  background: var(--paper2);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.68em;
+  color: var(--ink3);
+  vertical-align: middle;
+  font-style: normal;
+  font-weight: 400;
+  border: 1px solid var(--rule);
+}
+
+/* instrução de delivery */
+.delivery {
+  background: var(--paper);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.82rem;
+  color: var(--ink3);
+  line-height: 1.6;
+  border-left: 2px solid var(--rule);
+}
+
+.delivery strong { color: var(--ink2); }
+
+/* aviso vermelho */
+.alert-box {
+  background: #FEF2EF;
+  border: 1.5px solid #E8B4A8;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  font-size: 0.88rem;
+  color: #7A2A18;
+  line-height: 1.65;
+}
+
+.alert-box strong { color: var(--accent); }
+
+/* dica verde */
+.tip-box {
+  background: var(--p1-light);
+  border: 1.5px solid rgba(26,74,60,0.2);
+  border-left: 4px solid var(--p1);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  font-size: 0.88rem;
+  color: var(--p1);
+  line-height: 1.65;
+}
+
+.tip-box strong { font-weight: 600; }
+
+/* ── TAGS DE ENTREGA ─────────────────────────── */
+.delivery-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+.dtag {
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
+  padding: 0.22rem 0.65rem;
+  border-radius: 100px;
+  border: 1px solid;
+  letter-spacing: 0.06em;
+}
+
+.dtag-green { border-color: #2E6B52; color: #1A4A3C; background: #E8F4EF; }
+.dtag-red   { border-color: #C0614D; color: #8B2A18; background: #FBE9E5; }
+.dtag-gold  { border-color: #9A6520; color: #6A4410; background: #F7EDD8; }
+.dtag-blue  { border-color: #4A7AB5; color: #1E3A6A; background: #E8F0F8; }
+.dtag-gray  { border-color: var(--rule); color: var(--ink3); background: var(--paper); }
+
+/* ── TRANSIÇÃO ENTRE APRESENTADORES ─────────── */
+.handoff {
+  background: var(--paper);
+  border: 1.5px dashed var(--rule);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.5rem 0 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.handoff-icon { font-size: 1.6rem; flex-shrink: 0; }
+
+.handoff-body { flex: 1; }
+
+.handoff-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 0.3rem;
+}
+
+.handoff-text {
+  font-size: 0.88rem;
+  color: var(--ink2);
+  line-height: 1.65;
+  font-style: italic;
+}
+
+.handoff-text strong { font-style: normal; color: var(--ink); font-weight: 600; }
+
+/* ── QUOTE GRANDE ─────────────────────────── */
+.pull-quote {
+  margin: 2.5rem 0;
+  padding: 0 2rem;
+  border-left: 4px solid var(--rule);
+}
+
+.pq-text {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.pq-source {
+  margin-top: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--ink3);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ── TABELA ──────────────────────────────────── */
+.table-wrap { overflow-x: auto; margin: 1.5rem 0; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+thead th {
+  background: var(--paper2);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  font-weight: 400;
+  border-bottom: 1.5px solid var(--rule);
+}
+
+tbody td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--rule2);
+  color: var(--ink2);
+  line-height: 1.55;
+  vertical-align: top;
+}
+
+tbody td strong { color: var(--ink); }
+
+tbody tr:hover td { background: var(--cream); }
+
+/* ── GRID 3 COLS ─────────────────────────────── */
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.1rem;
+}
+
+@media(max-width:720px){ .grid3 { grid-template-columns: 1fr; } }
+
+.g3-card {
+  background: white;
+  border: 1.5px solid var(--rule2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.g3-card:hover {
+  border-color: var(--rule);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.g3-icon { font-size: 1.6rem; margin-bottom: 0.75rem; display: block; }
+
+.g3-title {
+  font-family: var(--font-serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.g3-body {
+  font-size: 0.85rem;
+  color: var(--ink3);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+.g3-body strong { color: var(--ink2); font-weight: 600; }
+
+/* ── CHECKLIST ─────────────────────────────── */
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.checklist li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  font-size: 0.9rem;
+  color: var(--ink2);
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid var(--rule2);
+}
+
+.checklist li::before {
+  content: '□';
+  color: var(--gold);
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: 0.05rem;
+  font-family: var(--font-mono);
+}
+
+.checklist li strong { color: var(--ink); }
+
+/* ── GRID 2 COLS ─────────────────────────────── */
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+@media(max-width:680px){ .grid2 { grid-template-columns: 1fr; } }
+
+.g2-card {
+  background: white;
+  border: 1.5px solid var(--rule2);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.g2-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 0.6rem;
+}
+
+.g2-body {
+  font-size: 0.88rem;
+  color: var(--ink2);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.g2-body strong { color: var(--ink); font-weight: 600; }
+
+/* ── QA ITEM ─────────────────────────────────── */
+.qa-item {
+  background: white;
+  border: 1.5px solid var(--rule2);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.qa-q {
+  padding: 1.25rem 1.5rem;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule2);
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.qa-q::before {
+  content: 'P';
+  background: var(--gold);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.qa-a {
+  padding: 1.25rem 1.5rem;
+}
+
+.qa-a-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 0.6rem;
+}
+
+.qa-resp {
+  font-size: 0.9rem;
+  color: var(--ink2);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.qa-resp strong { color: var(--ink); font-weight: 600; }
+
+/* ── TIMELINE DE PREPARAÇÃO ─────────────────── */
+.prep-timeline {
+  position: relative;
+  padding-left: 2.5rem;
+}
+
+.prep-timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.6rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 1.5px;
+  background: var(--rule);
+}
+
+.ptl-item {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.ptl-item::before {
+  content: '';
+  position: absolute;
+  left: -2.05rem;
+  top: 0.85rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: var(--cream);
+}
+
+.ptl-when {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.ptl-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.ptl-body {
+  font-size: 0.88rem;
+  color: var(--ink3);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+.ptl-body strong { color: var(--ink2); font-weight: 600; }
+
+/* ── ERROS ─────────────────────────────────── */
+.error-item {
+  background: white;
+  border: 1.5px solid var(--rule2);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 4px 1fr;
+}
+
+.error-item-bar { background: var(--accent); }
+
+.error-content { padding: 1.25rem 1.5rem; }
+
+.error-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+
+.error-body {
+  font-size: 0.85rem;
+  color: var(--ink3);
+  line-height: 1.65;
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+}
+
+.error-fix {
+  font-size: 0.82rem;
+  color: var(--p1);
+  font-weight: 600;
+}
+
+.error-fix::before { content: '→ '; }
+
+/* ── FOOTER ──────────────────────────────────── */
+footer {
+  background: var(--paper2);
+  border-top: 1px solid var(--rule);
+  padding: 3rem 2.5rem;
+  text-align: center;
+}
+
+footer p {
+  font-size: 0.82rem;
+  color: var(--ink3);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+footer strong { color: var(--p1); font-weight: 600; }
+
+/* ── ANIMAÇÕES ──────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── ÍNDICE LATERAL ─────────────────────────── */
+.toc-side {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  z-index: 100;
+}
+
+.ts-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rule);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.ts-dot:hover, .ts-dot.active { background: var(--p1); transform: scale(1.5); }
+
+@media(max-width:1000px) { .toc-side { display: none; } }
+
+/* ── RESPONSIVE ─────────────────────────────── */
+@media(max-width:540px){
+  .hero { padding: 7rem 1.5rem 3rem; }
+  .section { padding: 3rem 1.5rem; }
+  .pb-header { flex-wrap: wrap; }
+  .pb-stats { text-align: left; }
+}
+
+/* ── NÚMERO DO SLIDE GRANDE ─────────────────── */
+.slide-num-big {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.07;
+  position: absolute;
+  right: 1.25rem;
+  top: 1.25rem;
+  pointer-events: none;
+}
+
+.slide-item { position: relative; }
+
+</style>
+</head>
+<body>
+
+<!-- ÍNDICE LATERAL -->
+<div class="toc-side" id="toc">
+  <div class="ts-dot active" data-target="hero"         title="Início"></div>
+  <div class="ts-dot"        data-target="divisao"      title="Divisão"></div>
+  <div class="ts-dot"        data-target="apresentador1" title="Apresentador 1"></div>
+  <div class="ts-dot"        data-target="apresentador2" title="Apresentador 2"></div>
+  <div class="ts-dot"        data-target="apresentador3" title="Apresentador 3"></div>
+  <div class="ts-dot"        data-target="transicoes"   title="Transições"></div>
+  <div class="ts-dot"        data-target="erros"        title="Erros comuns"></div>
+  <div class="ts-dot"        data-target="preparacao"   title="Preparação"></div>
+  <div class="ts-dot"        data-target="perguntas"    title="Perguntas"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+  <span class="nav-brand">Hanseniase · Guia de Apresentação</span>
+  <ul class="nav-links">
+    <li><a href="#divisao">Divisão</a></li>
+    <li><a href="#apresentador1">Apres. 1</a></li>
+    <li><a href="#apresentador2">Apres. 2</a></li>
+    <li><a href="#apresentador3">Apres. 3</a></li>
+    <li><a href="#erros">Erros</a></li>
+    <li><a href="#preparacao">Preparação</a></li>
+    <li><a href="#perguntas">Q&A</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════ -->
+<header class="hero" id="hero" style="animation: fadeUp 0.6s ease both;">
+  <p class="hero-kicker">Guia de Apresentação · 3 Apresentadores · 15 minutos</p>
+  <h1>Como apresentar<br><em>Hanseníase</em><br>em três vozes</h1>
+  <p class="hero-sub">Um manual exaustivo para três apresentadores dividirem os 14 slides com máximo impacto — cada um com script completo, instruções de entrega e raciocínio por trás de cada fala.</p>
+  <div class="hero-meta">
+    <span class="chip chip-green"><span>●</span> Apres. 1 — Abertura e Contexto</span>
+    <span class="chip chip-terra"><span>●</span> Apres. 2 — Clínica e Diagnóstico</span>
+    <span class="chip chip-blue"><span>●</span> Apres. 3 — Tratamento e Fechamento</span>
+    <span class="chip chip-gold">PCDT 2023 · MS · OMS</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════
+     DIVISÃO GERAL
+══════════════════════════════════════════════ -->
+<section class="section reveal" id="divisao">
+  <p class="section-kicker">Visão geral</p>
+  <h2 class="section-title">Como o tempo foi dividido</h2>
+  <p class="section-lead">A divisão não é aleatória. Cada apresentador tem uma missão narrativa específica: o primeiro cria urgência e contexto, o segundo constrói o raciocínio clínico, o terceiro entrega a resolução e fecha com impacto emocional.</p>
+
+  <div class="presenter-overview">
+    <div class="po-card po-card-p1 po-p1" data-letter="A">
+      <p class="po-subtitle">Apresentador 1</p>
+      <p class="po-name">Abertura &amp; Contexto</p>
+      <p class="po-slides">Slides 1 a 5 · Capa, caso clínico, epidemiologia, agente, espectro</p>
+      <p class="po-time">≈ 5 minutos</p>
+      <p class="po-role">Seu papel é criar urgência e instalar o problema na cabeça do ouvinte. Ninguém deve ficar indiferente após os seus 5 minutos.</p>
+    </div>
+    <div class="po-card po-card-p2 po-p2" data-letter="B">
+      <p class="po-subtitle">Apresentador 2</p>
+      <p class="po-name">Clínica &amp; Diagnóstico</p>
+      <p class="po-slides">Slides 6 a 9 · Sinais cardinais, nervos, fluxo diagnóstico, reação T1</p>
+      <p class="po-time">≈ 5 minutos</p>
+      <p class="po-role">Seu papel é construir o raciocínio clínico completo — o ouvinte deve sair sabendo exatamente o que fazer ao ver um paciente suspeito.</p>
+    </div>
+    <div class="po-card po-card-p3 po-p3" data-letter="C">
+      <p class="po-subtitle">Apresentador 3</p>
+      <p class="po-name">Tratamento &amp; Fechamento</p>
+      <p class="po-slides">Slides 10 a 14 · PQT-U, reação T2, incapacidades, contatos, síntese</p>
+      <p class="po-time">≈ 5 minutos</p>
+      <p class="po-role">Seu papel é resolver o problema clínico, chocar com as incapacidades e fechar com a frase que o ouvinte vai carregar para sempre.</p>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Slide</th>
+          <th>Título</th>
+          <th>Apresentador</th>
+          <th>Tempo</th>
+          <th>Missão do slide</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Capa — HANSENÍASE</td><td><span class="p-badge badge-p1"><span class="dot"></span>Apres. 1</span></td><td>30 s</td><td>Instalar gravidade e silêncio</td></tr>
+        <tr><td>2</td><td>Caso clínico — "essa mancha não dói"</td><td><span class="p-badge badge-p1"><span class="dot"></span>Apres. 1</span></td><td>1 min 30 s</td><td>Gancho emocional — ativar amígdala</td></tr>
+        <tr><td>3</td><td>Epidemiologia Brasil</td><td><span class="p-badge badge-p1"><span class="dot"></span>Apres. 1</span></td><td>1 min</td><td>Urgência social — números que assustam</td></tr>
+        <tr><td>4</td><td>M. leprae — o agente</td><td><span class="p-badge badge-p1"><span class="dot"></span>Apres. 1</span></td><td>45 s</td><td>Tropismo neural = origem de tudo</td></tr>
+        <tr><td>5</td><td>Espectro Ridley-Jopling</td><td><span class="p-badge badge-p1"><span class="dot"></span>Apres. 1</span></td><td>1 min 15 s</td><td>Framework imunológico — fundação do raciocínio</td></tr>
+        <tr><td>6</td><td>3 Sinais Cardinais</td><td><span class="p-badge badge-p2"><span class="dot"></span>Apres. 2</span></td><td>1 min 30 s</td><td>A regra que não pode ser esquecida</td></tr>
+        <tr><td>7</td><td>Nervos acometidos — silhueta</td><td><span class="p-badge badge-p2"><span class="dot"></span>Apres. 2</span></td><td>1 min 30 s</td><td>Visualizar = memorizar o exame</td></tr>
+        <tr><td>8</td><td>Classificação PB vs MB</td><td><span class="p-badge badge-p2"><span class="dot"></span>Apres. 2</span></td><td>1 min</td><td>A decisão que define o tratamento</td></tr>
+        <tr><td>9</td><td>Reação Tipo 1 — reversa</td><td><span class="p-badge badge-p2"><span class="dot"></span>Apres. 2</span></td><td>1 min</td><td>Emergência neurológica — urgência máxima</td></tr>
+        <tr><td>10</td><td>PQT-U — tratamento</td><td><span class="p-badge badge-p3"><span class="dot"></span>Apres. 3</span></td><td>1 min 30 s</td><td>Esquema novo (2021) — fácil de guardar</td></tr>
+        <tr><td>11</td><td>Reação Tipo 2 — eritema nodoso</td><td><span class="p-badge badge-p3"><span class="dot"></span>Apres. 3</span></td><td>1 min</td><td>Sistêmico + talidomida = alerta máximo</td></tr>
+        <tr><td>12</td><td>Grau de incapacidade — 3 mãos</td><td><span class="p-badge badge-p3"><span class="dot"></span>Apres. 3</span></td><td>1 min</td><td>Choque visual — diagnóstico tardio tem rosto</td></tr>
+        <tr><td>13</td><td>Contatos + BCG + PEP-1</td><td><span class="p-badge badge-p3"><span class="dot"></span>Apres. 3</span></td><td>45 s</td><td>O trabalho não acaba no diagnóstico</td></tr>
+        <tr><td>14</td><td>Síntese + encerramento</td><td><span class="p-badge badge-p3"><span class="dot"></span>Apres. 3</span></td><td>45 s</td><td>Ancoragem final — a frase que fica</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="pull-quote" style="margin-top:2rem;">
+    <p class="pq-text">"Cada apresentador entra como um personagem diferente de uma mesma narrativa. Quando a história flui, o ouvinte não percebe a troca — percebe apenas que está sendo levado a algum lugar."</p>
+    <p class="pq-source">Princípio de apresentação colaborativa</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     APRESENTADOR 1
+══════════════════════════════════════════════ -->
+<section class="section" id="apresentador1">
+  <p class="section-kicker">Script completo</p>
+  <h2 class="section-title">Apresentador 1</h2>
+  <p class="section-lead">Sua missão é a mais difícil: você começa do zero, sem atenção conquistada, e precisa criar urgência absoluta em 5 minutos. Você é quem instala o problema na cabeça de cada pessoa na sala.</p>
+
+  <div class="presenter-block reveal">
+    <div class="pb-header pb-header-p1">
+      <div class="pb-avatar">A</div>
+      <div class="pb-info">
+        <p class="pb-name">Abertura, Contexto e Espectro</p>
+        <p class="pb-desc">Slides 1–5 · Você cria o problema. Os outros dois entram para resolvê-lo.</p>
+      </div>
+      <div class="pb-stats">
+        <p class="pb-stat-val">5'</p>
+        <p class="pb-stat-label">5 slides</p>
+      </div>
+    </div>
+
+    <div class="pb-body pb-body-p1">
+
+      <!-- SLIDE 1 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">1</span>
+        <div class="si-head">
+          <span class="si-num si-num-p1">Slide 1</span>
+          <span class="si-title">Capa — HANSENÍASE</span>
+          <span class="si-time">30 s</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Criar presença e silêncio.</strong> Antes de falar qualquer coisa, o slide já precisa comunicar peso. Você entra em cena antes de abrir a boca.</p>
+        </div>
+
+        <div class="si-why si-why-p1">
+          <strong>Por que isso funciona:</strong> O silêncio inicial é uma técnica de teatro e retórica. Quando um apresentador espera antes de falar, a plateia <em>vem para ele</em> — é instinto. O título enorme e o visual austero plantam a pergunta: "por que isso é tão sério?" Você não responde ainda. Deixa a tensão crescer por 4 segundos.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="delivery">
+          <strong>ANTES de falar:</strong> Apareça o slide. Fique parado. Olhe para a plateia. Respire. Conte mentalmente até 4. Só então comece.
+        </div>
+
+        <div class="fala">
+          <strong>"Hanseníase."</strong> <span class="pause">pausa 2s</span>
+        </div>
+
+        <div class="fala">
+          <strong>"A doença mais antiga descrita na história da humanidade."</strong> <span class="pause">pausa</span> <strong>"Descrita no Egito Antigo. Na Índia há quatro mil anos. Na Bíblia."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"E em 2026, o Brasil ocupa o segundo lugar do mundo em casos novos."</strong> <span class="pause">pausa longa — 3 segundos</span>
+        </div>
+
+        <div class="fala">
+          <strong>"Em 15 minutos, vocês vão entender por que isso ainda acontece — e o que cada um de vocês pode fazer para mudar esse número."</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-gold">Silêncio inicial de 4 segundos</span>
+          <span class="dtag dtag-red">Tom sóbrio — não entusiasmado</span>
+          <span class="dtag dtag-blue">Olhe para 3 pessoas diferentes na sala</span>
+          <span class="dtag dtag-green">Fique parado — sem gestos ainda</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">2</span>
+        <div class="si-head">
+          <span class="si-num si-num-p1">Slide 2</span>
+          <span class="si-title">Caso clínico — "essa mancha não dói e não coça"</span>
+          <span class="si-time">1 min 30 s</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Ativar empatia e instalar culpa sistêmica.</strong> O ouvinte precisa sentir que <em>poderia ter sido ele</em> errando esse diagnóstico — e que nunca vai errar de novo. Este é o slide mais importante dos seus 5 minutos.</p>
+        </div>
+
+        <div class="si-why si-why-p1">
+          <strong>Por que isso funciona:</strong> Casos clínicos ativam a amígdala antes do córtex pré-frontal. Emoção abre a porta da memória. Quando você humaniza o paciente — 34 anos, esperou 8 meses, viu dois médicos antes — você transforma informação em experiência. O ouvinte não vai memorizar epidemiologia, mas vai lembrar desse homem.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="delivery">
+          <strong>Ao aparecer o slide:</strong> Não comece imediatamente. Deixe a frase da tela ser lida. 2 segundos. Depois fale.
+        </div>
+
+        <div class="fala">
+          <strong>"Homem. Trinta e quatro anos."</strong> <span class="pause">pausa</span> <strong>"Procurou o serviço de saúde com uma mancha no antebraço esquerdo."</strong> <span class="pause">pausa</span> <strong>"Oito meses de história."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Ele notou que a mancha estava diferente — meio branca, mal definida. Mas não doía. Não coçava. Não incomodava."</strong> <span class="pause">pausa</span> <strong>"Ele achou que era frescura. Esperou dois meses antes de ir ao médico."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"O primeiro médico olhou. Mandou usar corticoide tópico por 30 dias."</strong> <span class="pause">pausa</span> <strong>"Sem melhora. Voltou."</strong> <span class="pause">pausa</span> <strong>"O segundo médico fez o mesmo."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Quando chegou ao terceiro — que palpou o nervo ulnar —"</strong> <span class="pause">pausa</span> <strong>"o nervo já estava espessado. Dois sinais cardinais presentes desde o início."</strong>
+        </div>
+
+        <div class="delivery">
+          <strong>Aqui: baixe o volume. Fale mais devagar. Contato visual com alguém na plateia.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"O diagnóstico estava ali. Na primeira consulta. Esperando que alguém palpasse um nervo."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Essa aula existe para que vocês sejam esse terceiro médico — na primeira consulta."</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-red">Desacelere em "dois meses sem ir" — culpa sistêmica</span>
+          <span class="dtag dtag-gold">Volume baixo na última fala — força atenção</span>
+          <span class="dtag dtag-blue">Contato visual direto com uma pessoa</span>
+          <span class="dtag dtag-green">Não acelere — este slide vale mais tempo</span>
+          <span class="dtag dtag-gray">Não gesticule muito — deixe as palavras trabalhar</span>
+        </div>
+
+        <div class="alert-box">
+          <strong>Erro fatal neste slide:</strong> passar rápido pelo caso para "chegar logo ao conteúdo". O caso clínico <em>é</em> o conteúdo mais importante. Se você o tratar como introdução, você perdeu o gancho emocional para o resto da apresentação.
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">3</span>
+        <div class="si-head">
+          <span class="si-num si-num-p1">Slide 3</span>
+          <span class="si-title">Epidemiologia — os números do Brasil</span>
+          <span class="si-time">1 min</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Transformar o caso individual em urgência coletiva.</strong> O ouvinte acabou de sentir empatia por um paciente. Agora você mostra que há 18 mil iguais a ele por ano — e que 5% são crianças.</p>
+        </div>
+
+        <div class="si-why si-why-p1">
+          <strong>Por que isso funciona:</strong> O número de crianças é o gatilho emocional mais forte desta parte. Criança com hanseníase é prova de transmissão ativa de um adulto MB não diagnosticado dentro de casa. É uma falha invisível. Quando você nomeia esse mecanismo, você transforma estatística em injustiça — e isso mobiliza.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="fala">
+          <strong>"Aquele paciente não está sozinho."</strong> <span class="pause">pausa</span> <strong>"Em 2024, o Brasil notificou cerca de 18 mil casos novos de hanseníase."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Segundo lugar do mundo — atrás apenas da Índia, que tem seis vezes a nossa população."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Hiperendêmico no Norte, Nordeste e Centro-Oeste."</strong> <span class="pause">pausa</span> <strong>"Mas não é a distância geográfica que deve nos preocupar aqui."</strong>
+        </div>
+
+        <div class="delivery">
+          <strong>Pausa mais longa aqui. Aponte para o número no slide.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"É esse número: 5% dos casos são em menores de 15 anos."</strong> <span class="pause">pausa</span>
+        </div>
+
+        <div class="fala">
+          <strong>"Pensem comigo."</strong> <span class="pause">pausa</span> <strong>"Uma criança com hanseníase significa que existe um adulto multibacilar dentro da mesma casa, sem diagnóstico, transmitindo o bacilo há anos."</strong> <span class="pause">pausa</span>
+        </div>
+
+        <div class="fala">
+          <strong>"Criança com hanseníase não é azar. É uma falha do sistema de saúde. Sempre."</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-red">Aponte fisicamente para o 5% no slide</span>
+          <span class="dtag dtag-gold">"É uma falha. Sempre." — diga com firmeza</span>
+          <span class="dtag dtag-blue">Tom de indignação moderada — não raiva, mas gravidade</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">4</span>
+        <div class="si-head">
+          <span class="si-num si-num-p1">Slide 4</span>
+          <span class="si-title">M. leprae — o agente etiológico</span>
+          <span class="si-time">45 s</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Conectar a biologia do agente à clínica que vem a seguir.</strong> O ouvinte não precisa memorizar biologia — precisa entender <em>por que</em> é o nervo que define a doença.</p>
+        </div>
+
+        <div class="si-why si-why-p1">
+          <strong>Por que isso funciona:</strong> "Tropismo pela célula de Schwann" é uma frase que, quando bem explicada, conecta o agente à fisiopatologia, ao quadro clínico e às incapacidades em 20 segundos. É um fio condutor que atravessa toda a apresentação.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="fala">
+          <strong>"Mycobacterium leprae. BAAR intracelular obrigatório."</strong> <span class="pause">pausa</span> <strong>"Não precisa decorar a biologia toda — precisa entender uma coisa:"</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Esse bacilo tem tropismo pela célula de Schwann."</strong> <span class="pause">pausa</span> <strong>"A célula que envolve e nutre os nervos periféricos."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Não é acidente. É a escolha evolutiva do bacilo. E é por isso que a hanseníase é uma doença neurodérmica — não só de pele."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"A pele mostra a doença. O nervo sofre a doença. E é o nervo que vai determinar se o paciente perde função ou não."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Mais um detalhe prático: o tempo de duplicação é de 12 dias."</strong> <span class="pause">pausa</span> <strong>"Por isso o paciente espera meses antes de perceber qualquer coisa. Por isso ele chegou com 8 meses de história."</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-blue">Conecte ao caso clínico — "por isso ele esperou"</span>
+          <span class="dtag dtag-green">Slide rápido — não demore mais que 50s</span>
+          <span class="dtag dtag-gray">Não entre em detalhes microbiológicos</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">5</span>
+        <div class="si-head">
+          <span class="si-num si-num-p1">Slide 5</span>
+          <span class="si-title">Espectro clínico — Ridley-Jopling</span>
+          <span class="si-time">1 min 15 s</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Construir o framework imunológico que explica toda a clínica.</strong> O ouvinte precisa sair deste slide entendendo que <em>a forma clínica é determinada pela imunidade do hospedeiro</em>, não pelo bacilo — e que isso determina o tratamento.</p>
+        </div>
+
+        <div class="si-why si-why-p1">
+          <strong>Por que isso funciona:</strong> A barra de espectro visual com ícones de lesões à cima e os blocos PB/MB abaixo cria uma ligação direta entre fisiopatologia e decisão terapêutica. Quando o ouvinte vê isso junto, o framework inteiro se encaixa em 60 segundos.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="fala">
+          <strong>"Olha esse gradiente."</strong> <span class="pause">pausa</span> <strong>"Hanseníase não é uma doença — é um espectro. E quem decide onde o paciente cai nesse espectro não é o bacilo."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"É o sistema imune do hospedeiro."</strong> <span class="pause">pausa</span>
+        </div>
+
+        <div class="delivery">
+          <strong>Use gestos amplos — mão esquerda para a esquerda do slide, mão direita para a direita.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Aqui, nessa ponta —"</strong> [aponte para a esquerda] <strong>"— imunidade celular forte. Th1 dominou o bacilo. Poucas lesões, bem definidas, baciloscopia negativa. É o polo tuberculoide. É paucibacilar."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Aqui, nessa ponta —"</strong> [aponte para a direita] <strong>"— imunidade celular caiu. O bacilo se multiplicou sem freio. Muitas lesões, infiltração, baciloscopia positiva. É o polo virchowiano. É multibacilar. Alta transmissão."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"No meio do espectro — os dimorfos. São os mais instáveis, os que mais fazem reações."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Esses dois retângulos embaixo são o que importa para a conduta:"</strong> <span class="pause">pausa</span> <strong>"paucibacilar ou multibacilar. Isso define o tratamento. Os dois próximos colegas vão construir em cima disso."</strong>
+        </div>
+
+        <div class="delivery">
+          <strong>Última frase — passe a palavra explicitamente para o Apresentador 2. Olhe para ele/ela.</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-blue">Gestos bilaterais na barra — amplifica o espectro</span>
+          <span class="dtag dtag-gold">Conecte visualmente ícones de lesões à imunidade</span>
+          <span class="dtag dtag-green">Termine passando a palavra ao Apresentador 2</span>
+          <span class="dtag dtag-gray">Não entre em BT/BB/BL com detalhes — visão macro</span>
+        </div>
+      </div>
+
+    </div><!-- pb-body -->
+  </div><!-- presenter-block -->
+
+  <!-- HANDOFF 1→2 -->
+  <div class="handoff reveal">
+    <div class="handoff-icon">🤝</div>
+    <div class="handoff-body">
+      <p class="handoff-label">Transição — Apresentador 1 passa para Apresentador 2</p>
+      <p class="handoff-text">O Apresentador 1 <strong>não some</strong> — termina com "os próximos colegas vão construir em cima disso" e se afasta levemente. O Apresentador 2 avança <strong>sem pressa</strong>, dá 1 segundo de pausa e começa com tom diferente — mais técnico, mais clínico.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     APRESENTADOR 2
+══════════════════════════════════════════════ -->
+<section class="section" id="apresentador2">
+  <p class="section-kicker">Script completo</p>
+  <h2 class="section-title">Apresentador 2</h2>
+  <p class="section-lead">Você entra com o ouvinte já sensibilizado. Sua missão é construir o raciocínio clínico passo a passo — diagnóstico, nervos, classificação e a primeira reação hansênica. Você é quem ensina o que fazer diante do paciente.</p>
+
+  <div class="presenter-block reveal">
+    <div class="pb-header pb-header-p2">
+      <div class="pb-avatar">B</div>
+      <div class="pb-info">
+        <p class="pb-name">Clínica, Diagnóstico e Reação T1</p>
+        <p class="pb-desc">Slides 6–9 · Você constrói o raciocínio. O ouvinte sai sabendo o que fazer.</p>
+      </div>
+      <div class="pb-stats">
+        <p class="pb-stat-val">5'</p>
+        <p class="pb-stat-label">4 slides</p>
+      </div>
+    </div>
+
+    <div class="pb-body pb-body-p2">
+
+      <!-- SLIDE 6 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">6</span>
+        <div class="si-head">
+          <span class="si-num si-num-p2">Slide 6</span>
+          <span class="si-title">3 Sinais Cardinais — basta 1</span>
+          <span class="si-time">1 min 30 s</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Gravar os 3 critérios diagnósticos de forma indelével.</strong> Especialmente a regra de que basta 1 — e que baciloscopia negativa não exclui o diagnóstico. Esses são os dois erros mais comuns em prova e na prática.</p>
+        </div>
+
+        <div class="si-why si-why-p2">
+          <strong>Por que isso funciona:</strong> Os três ícones grandes no slide (lesão com X, nervo espessado, lâmina com ⊕) funcionam como âncoras visuais. Quando você fala "basta um dos três" enquanto o ouvinte vê as três imagens, a memória visual reforça a memória auditiva. A pegadinha da baciloscopia negativa precisa ser dita duas vezes — a repetição estratégica cria urgência sem parecer redundância.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="fala">
+          <strong>"O diagnóstico de hanseníase é clínico."</strong> <span class="pause">pausa</span> <strong>"Não precisa de tomografia. Não precisa de PCR. Não precisa de hospital de referência."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"O Ministério da Saúde define um caso de hanseníase pela presença de pelo menos um dos três sinais cardinais."</strong>
+        </div>
+
+        <div class="delivery">
+          <strong>Percorra os três ícones do slide apontando — esquerda, centro, direita — conforme fala cada um.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Primeiro:"</strong> [aponte] <strong>"lesão de pele com alteração de sensibilidade — térmica, dolorosa ou tátil. A térmica é a mais precoce — é a primeira a desaparecer."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Segundo:"</strong> [aponte] <strong>"espessamento de nervo periférico associado a alteração sensitiva, motora ou autonômica."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Terceiro:"</strong> [aponte] <strong>"baciloscopia ou biópsia positiva confirmando o M. leprae."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Um. Só precisa de um desses três."</strong> <span class="pause">pausa</span> <strong>"Mas aqui está a armadilha clássica —"</strong>
+        </div>
+
+        <div class="delivery">
+          <strong>Tom mais grave. Pausa antes de falar a próxima frase.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Baciloscopia negativa não exclui hanseníase."</strong> <span class="pause">pausa</span> <strong>"Por definição, paucibacilar tem baciloscopia negativa. Isso não elimina o diagnóstico."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Outra: PCR e sorologia anti-PGL-1 não são critério diagnóstico de rotina. Teste de Mitsuda é prognóstico, não diagnóstico. Esses erros caem toda semana em prova de residência."</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-red">Repita "baciloscopia negativa não exclui" duas vezes</span>
+          <span class="dtag dtag-gold">Aponte para cada ícone ao falar cada cardinal</span>
+          <span class="dtag dtag-blue">"Isso cai em prova" — ativa atenção imediata</span>
+          <span class="dtag dtag-green">Tom técnico, seguro, como quem domina o assunto</span>
+        </div>
+
+        <div class="tip-box">
+          <strong>Dica de entrega:</strong> quando disser "um só precisa de um desses três", levante um dedo. O gesto físico reforça a memória. A plateia vai lembrar do gesto quando precisar do conteúdo.
+        </div>
+      </div>
+
+      <!-- SLIDE 7 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">7</span>
+        <div class="si-head">
+          <span class="si-num si-num-p2">Slide 7</span>
+          <span class="si-title">Nervos acometidos — silhueta humana</span>
+          <span class="si-time">1 min 30 s</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Associar visualmente cada nervo à sua sequela.</strong> O ouvinte precisa ver a silhueta e instintivamente pensar "ulnar = garra, fibular = pé caído". Isso só acontece se você percorrer cada nervo com gesto e ritmo.</p>
+        </div>
+
+        <div class="si-why si-why-p2">
+          <strong>Por que isso funciona:</strong> A silhueta humana com pontos marcados é uma das imagens mais poderosas de toda a apresentação porque combina anatomia funcional com urgência clínica. Quando você aponta para o pé na silhueta e diz "pé caído — esse paciente não consegue mais subir degrau sem cair", você cria uma imagem mental que não sai da memória.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="fala">
+          <strong>"Agora olha essa silhueta."</strong> <span class="pause">pausa 2s — deixe o ouvinte ver</span>
+        </div>
+
+        <div class="fala">
+          <strong>"Cada ponto vermelho nessa imagem é um nervo que pode ser destruído de forma irreversível se o diagnóstico demorar."</strong>
+        </div>
+
+        <div class="delivery">
+          <strong>Percorra cada nervo apontando fisicamente para o slide. Desacelere. Cada nervo tem 1 sequela — diga as duas coisas juntas.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Nervo ulnar —"</strong> [aponte] <strong>"— mão em garra, com hipoestesia no quarto e quinto dedos."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Nervo mediano —"</strong> [aponte] <strong>"— mão simiesca, com perda da oposição do polegar. O paciente não consegue pegar objetos finos."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Nervo radial —"</strong> [aponte] <strong>"— mão caída. Não levanta o punho."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Nervo fibular comum —"</strong> [aponte] <strong>"— pé caído. Não dá flexão dorsal. Esse paciente tropeça, cai, se machuca. E geralmente não sente."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Nervo tibial posterior —"</strong> [aponte] <strong>"— garra plantar, mal perfurante. Uma ferida que o paciente não sente se aprofunda até o osso."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Nervo facial —"</strong> [aponte] <strong>"— lagoftalmo. O paciente não consegue fechar completamente o olho. Dorme de olho aberto. A córnea resseca, ulcera, e pode levar à cegueira."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Nervo auricular —"</strong> [aponte] <strong>"— espessamento visível e palpável. Esse sinal tem alta especificidade. Quase nada mais faz um nervo auricular ser palpável."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Em toda consulta com suspeita de hanseníase, vocês palpam esses nervos. São dois minutos de exame que podem mudar completamente a vida do paciente."</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-red">Descreva a sequela funcional — não só o nome</span>
+          <span class="dtag dtag-gold">Faça gestos da deformidade enquanto fala — mão caída, garra</span>
+          <span class="dtag dtag-blue">Silêncio de 2s ao aparecer o slide</span>
+          <span class="dtag dtag-green">"Palpam" — verbo imperativo, não sugestão</span>
+        </div>
+
+        <div class="alert-box">
+          <strong>Ponto crítico:</strong> mencione o lagoftalmo com consequência real. "Dorme de olho aberto" é mais impactante do que "paralisia do ramo zigomático do facial". Concretize sempre.
+        </div>
+      </div>
+
+      <!-- SLIDE 8 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">8</span>
+        <div class="si-head">
+          <span class="si-num si-num-p2">Slide 8</span>
+          <span class="si-title">Classificação operacional PB vs MB</span>
+          <span class="si-time">1 min</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Fixar a regra de contagem de lesões e a Regra de Ouro.</strong> O ouvinte precisa entender que dúvida = MB. Essa regra é mais importante do que decorar todos os critérios.</p>
+        </div>
+
+        <div class="si-why si-why-p2">
+          <strong>Por que isso funciona:</strong> A divisão visual de dois painéis grandes (PB verde / MB coral) com os critérios escritos em grande cria uma memória visual binária. O cérebro ama categorias — e quando você dá duas categorias com cores diferentes, a decisão clínica fica armazenada com muito menos esforço.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="fala">
+          <strong>"A classificação que define o tratamento não é Ridley-Jopling."</strong> <span class="pause">pausa</span> <strong>"É a operacional — da OMS e do Ministério da Saúde."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Paucibacilar: uma a cinco lesões cutâneas E baciloscopia obrigatoriamente negativa."</strong> <span class="pause">pausa</span> <strong>"Multibacilar: mais de cinco lesões OU baciloscopia positiva OU mais de um nervo periférico comprometido."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Contou as lesões. Viu a baciloscopia. Pronto."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Mas a regra mais importante aqui é essa:"</strong> <span class="pause">pausa</span>
+        </div>
+
+        <div class="delivery">
+          <strong>Tom firme. Fale devagar. Essa frase precisa ser lembrada.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Qualquer dúvida sobre classificação — trate como multibacilar."</strong> <span class="pause">pausa</span> <strong>"É mais seguro tratar a mais do que a menos. O PCDT 2023 deixa isso explícito."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Mnemônico que ajuda: PB é 'poucas e pálidas' — poucas lesões, baciloscopia pálida, negativa. MB é 'muitas e bacilíferas' — muitas lesões, bactérias visíveis na lâmina."</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-red">"Dúvida = MB" — fale com firmeza, não como sugestão</span>
+          <span class="dtag dtag-gold">Mnemônico PB/MB — ajuda a fixar</span>
+          <span class="dtag dtag-blue">Mencione que isso é o PCDT 2023 — credibilidade</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 9 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">9</span>
+        <div class="si-head">
+          <span class="si-num si-num-p2">Slide 9</span>
+          <span class="si-title">Reação Tipo 1 — reversa / tempestade nervosa</span>
+          <span class="si-time">1 min</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Instalar urgência: reação é emergência neurológica.</strong> E fixar a regra mais contraintuitiva de toda a hanseníase: não suspender a PQT durante a reação.</p>
+        </div>
+
+        <div class="si-why si-why-p2">
+          <strong>Por que isso funciona:</strong> O visual do slide — raios irradiando de um nervo central inflamado — evoca fisicamente a sensação de dor aguda e urgência. Quando o conteúdo visual e o tom de voz urgente se alinham, a memória emocional registra muito mais forte do que informação neutra.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="delivery">
+          <strong>Mude o tom aqui. Não didático — urgente. Como se estivesse descrevendo uma emergência real.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Reação hansênica tipo 1. Reação reversa."</strong> <span class="pause">pausa</span> <strong>"Emergência neurológica."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"O que acontece: o sistema imune do paciente exacerba a resposta contra o M. leprae. Hipersensibilidade celular — tipo IV. Lesões antigas que estavam estáveis ficam vermelhas, edemaciadas, dolorosas."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"E o nervo inflama. Neurite aguda — dor, espessamento, piora de sensibilidade, perda motora."</strong> <span class="pause">pausa</span>
+        </div>
+
+        <div class="fala">
+          <strong>"Acontece em dimorfos — pode ser PB ou MB. E pode ocorrer antes, durante ou depois do tratamento."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"A janela terapêutica para salvar esse nervo é estreita."</strong> <span class="pause">pausa</span> <strong>"Prednisona 1 mg/kg/dia imediatamente, com desmame lento."</strong>
+        </div>
+
+        <div class="delivery">
+          <strong>Pausa longa. Contato visual. Tom ainda mais firme na próxima fala.</strong>
+        </div>
+
+        <div class="fala">
+          <em>"E não — você não suspende a PQT."</em> <span class="pause">pausa</span> <strong>"Reação não é piora da infecção. É resposta imunológica. Trate a reação em paralelo. Continue o antibiótico."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Isso cai em prova toda semana e é erro na prática toda semana."</strong>
+        </div>
+
+        <div class="delivery">
+          <strong>Última frase do seu bloco. Passe a palavra ao Apresentador 3 com uma frase de transição.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"O colega agora vai falar sobre como tratar — começando com a PQT atualizada de 2021 e a segunda reação, que é ainda mais dramática."</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-red">Tom urgente — não didático</span>
+          <span class="dtag dtag-red">"Não suspende PQT" — mais ênfase que tudo</span>
+          <span class="dtag dtag-gold">Pausa após "emergência neurológica"</span>
+          <span class="dtag dtag-blue">Passe a palavra ao Apres. 3 com frase de gancho</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HANDOFF 2→3 -->
+  <div class="handoff reveal">
+    <div class="handoff-icon">🤝</div>
+    <div class="handoff-body">
+      <p class="handoff-label">Transição — Apresentador 2 passa para Apresentador 3</p>
+      <p class="handoff-text">O Apresentador 2 termina mencionando <strong>"a segunda reação, que é ainda mais dramática"</strong> — criando antecipação. O Apresentador 3 entra com o slide de PQT já preparado, pausa 1 segundo e começa de forma resoluta, como quem traz as respostas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     APRESENTADOR 3
+══════════════════════════════════════════════ -->
+<section class="section" id="apresentador3">
+  <p class="section-kicker">Script completo</p>
+  <h2 class="section-title">Apresentador 3</h2>
+  <p class="section-lead">Você entra como o resolvedor. O ouvinte já sabe o problema, já sabe o diagnóstico — agora precisa das respostas. Você entrega tratamento, alerta sobre talidomida, choca com as incapacidades e fecha com a frase que ficará para sempre.</p>
+
+  <div class="presenter-block reveal">
+    <div class="pb-header pb-header-p3">
+      <div class="pb-avatar">C</div>
+      <div class="pb-info">
+        <p class="pb-name">Tratamento, Incapacidades e Fechamento</p>
+        <p class="pb-desc">Slides 10–14 · Você resolve o problema e fecha com impacto máximo.</p>
+      </div>
+      <div class="pb-stats">
+        <p class="pb-stat-val">5'</p>
+        <p class="pb-stat-label">5 slides</p>
+      </div>
+    </div>
+
+    <div class="pb-body pb-body-p3">
+
+      <!-- SLIDE 10 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">10</span>
+        <div class="si-head">
+          <span class="si-num si-num-p3">Slide 10</span>
+          <span class="si-title">PQT-U — tratamento atualizado 2021</span>
+          <span class="si-time">1 min 30 s</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Fixar o esquema PQT-U de 2021 de forma visual e inesquecível.</strong> Três comprimidos, três cores, dois tempos. O ouvinte precisa sair sabendo as doses, a duração e as regras operacionais sem consultar nada.</p>
+        </div>
+
+        <div class="si-why si-why-p3">
+          <strong>Por que isso funciona:</strong> Os três comprimidos coloridos no slide criam um mnemônico visual: laranja (rifampicina), vermelho-escuro (clofazimina), azul (dapsona). As bolinhas numeradas para PB e MB criam uma representação espacial do tempo de tratamento — seis bolinhas é literalmente mais curto do que doze bolinhas. Quantidade visual = tempo real.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="fala">
+          <strong>"Tratamento."</strong> <span class="pause">pausa</span> <strong>"A boa notícia é que desde 2021 temos um esquema único — PQT-U."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Rifampicina, Clofazimina, Dapsona. Três drogas para todos os casos — PB e MB."</strong>
+        </div>
+
+        <div class="delivery">
+          <strong>Aponte para cada comprimido no slide enquanto fala. Faça isso devagar — a cor visual reforça a memória.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Laranja é a rifampicina — 600 mg na dose mensal supervisionada. É o bactericida mais potente do esquema. Essa dose você toma na UBS, na frente do profissional de saúde."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Vermelho-escuro é a clofazimina — 300 mg mensal na UBS, mais 50 mg diários em casa. Tem dupla ação: bactericida e anti-inflamatório. Atenção: ela pigmenta a pele — marrom-avermelhado. O paciente precisa ser avisado para não abandonar o tratamento achando que piorou."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Azul é a dapsona — 100 mg mensal e 100 mg diário em casa. Efeito adverso clássico: anemia hemolítica. Cuidado especial em pacientes com deficiência de G6PD."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"O que muda entre PB e MB é só o tempo."</strong> <span class="pause">pausa</span>
+        </div>
+
+        <div class="delivery">
+          <strong>Aponte para as bolinhas no cronograma — primeiro as 6 do PB, depois as 12 do MB.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"PB: seis doses mensais — em até 9 meses. Seis meses normalmente."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"MB: doze doses mensais — em até 18 meses."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Alta por cura não é teste microbiológico. É contar doses no prazo. Completou as doses? Alta. Notificação no SINAN é no diagnóstico — não na alta."</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-blue">Aponte para cada comprimido ao falar cada droga</span>
+          <span class="dtag dtag-gold">Pigmentação da clofazimina — mencionar para não abandono</span>
+          <span class="dtag dtag-red">Dapsona + G6PD — efeito adverso de prova</span>
+          <span class="dtag dtag-green">SINAN no diagnóstico — erro clássico em prova</span>
+          <span class="dtag dtag-gray">Reforce: não suspender PQT nas reações</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 11 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">11</span>
+        <div class="si-head">
+          <span class="si-num si-num-p3">Slide 11</span>
+          <span class="si-title">Reação Tipo 2 — eritema nodoso hansênico</span>
+          <span class="si-time">1 min</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Diferenciar de T1 e instalar o alerta máximo sobre a talidomida.</strong> O ouvinte precisa lembrar que talidomida é a droga certa — e que em mulheres férteis ela pode causar uma tragédia.</p>
+        </div>
+
+        <div class="si-why si-why-p3">
+          <strong>Por que isso funciona:</strong> A silhueta com nódulos espalhados por todo o corpo comunica visualmente o caráter sistêmico da reação tipo 2 — algo que palavras sozinhas não conseguem com a mesma eficiência. O contraste com T1 (local) vs T2 (sistêmico) fica gravado quando o ouvinte viu os dois slides em sequência.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <fala class="fala">
+          <strong>"A segunda reação é completamente diferente."</strong> <span class="pause">pausa</span> <strong>"Olha a silhueta — nódulos em todo o corpo. Esse caráter sistêmico é o que a define."</strong>
+        </fala>
+
+        <div class="fala">
+          <strong>"Reação tipo 2 — eritema nodoso hansênico — ENH. Exclusivamente em multibacilares. Mecanismo por imunocomplexos, tipo III."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Clinicamente: nódulos subcutâneos dolorosos que podem aparecer em qualquer parte do corpo. Febre. Artralgia. Neurite. E em casos graves: irite, orquite, nefrite."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Pode ser agudo, recorrente ou crônico. Em casos crônicos, o paciente pode precisar de medicação antirreacional por mais de um ano."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Tratamento de primeira linha: talidomida — 100 a 400 mg por dia."</strong> <span class="pause">pausa longa</span>
+        </div>
+
+        <div class="delivery">
+          <strong>Pausa antes da próxima frase. Olhe para a plateia. Fale devagar, com seriedade total.</strong>
+        </div>
+
+        <div class="fala">
+          <em>"E aqui o alerta mais importante desta apresentação:"</em> <span class="pause">pausa</span> <strong>"Talidomida é absolutamente contraindicada em mulheres em idade fértil sem contracepção dupla garantida."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Isso não é burocracia. Na década de 1960, a talidomida foi prescrita como calmante para grávidas na Europa. Nasceram milhares de bebês com focomelia — membros rudimentares ou ausentes."</strong> <span class="pause">pausa</span> <strong>"A tragédia foi real. O risco é real. Prescreveu talidomida para mulher em idade fértil? Contracepção dupla confirmada, por escrito, antes."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Se talidomida é contraindicada — neurite, acometimento de olhos ou testículos — usa-se prednisona. Pentoxifilina como terceira linha."</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-red">Talidomida + gravidez = tom mais sério de toda a aula</span>
+          <span class="dtag dtag-gold">Contar a história da focomelia — impacto histórico</span>
+          <span class="dtag dtag-blue">Pausa depois de "a tragédia foi real"</span>
+          <span class="dtag dtag-green">ENH sistêmico vs T1 local — diferença visual clara</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 12 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">12</span>
+        <div class="si-head">
+          <span class="si-num si-num-p3">Slide 12</span>
+          <span class="si-title">Grau de incapacidade — três mãos</span>
+          <span class="si-time">1 min</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Chocar visualmente e conectar GI 2 ao diagnóstico tardio.</strong> O ouvinte precisa entender que incapacidade não é destino — é consequência de um sistema que falhou. E que eles têm poder para mudar isso.</p>
+        </div>
+
+        <div class="si-why si-why-p3">
+          <strong>Por que isso funciona:</strong> As três mãos coloridas (verde, âmbar, vermelho) são a imagem mais memorável de toda a apresentação. Quando você coloca 2 segundos de silêncio antes de falar, o ouvinte já faz a progressão visual sozinho — e o impacto emocional vem antes das palavras.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="delivery">
+          <strong>Apareça o slide. Fique em silêncio por 3 segundos. Deixe as três mãos serem vistas. Só então fale.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Olha as três mãos."</strong> <span class="pause">pausa 2s</span>
+        </div>
+
+        <div class="fala">
+          <strong>"Grau zero: sensibilidade preservada. Sem deformidade. É esse o paciente que você quer ver."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Grau 1: hipoestesia em olhos, mãos ou pés — mas ainda sem deformidade visível."</strong> <span class="pause">pausa</span> <strong>"Ainda dá para reverter com tratamento."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Grau 2: deformidade visível."</strong> <span class="pause">pausa</span> <strong>"Isso é irreversível."</strong> <span class="pause">pausa longa</span>
+        </div>
+
+        <div class="delivery">
+          <strong>Baixe o volume. Fale as próximas duas frases com peso máximo.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Todo paciente que chega em grau 2 passou por pelo menos um profissional de saúde antes que não viu — ou não quis ver."</strong> <span class="pause">pausa</span> <strong>"O nervo morreu esperando alguém palpar."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"A meta da OMS é zerar casos com grau de incapacidade 2 ao diagnóstico."</strong> <span class="pause">pausa</span> <strong>"Não é uma meta do Ministério da Saúde. É de vocês."</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-red">Silêncio de 3s ao aparecer o slide — deixe o impacto vir</span>
+          <span class="dtag dtag-gold">"Irreversível" — pausa depois. Não explique. Deixe pesar.</span>
+          <span class="dtag dtag-blue">"É de vocês" — contato visual com a plateia</span>
+          <span class="dtag dtag-green">Volume baixo nas últimas frases — contraintuitivo e poderoso</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 13 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">13</span>
+        <div class="si-head">
+          <span class="si-num si-num-p3">Slide 13</span>
+          <span class="si-title">Contatos — rede de transmissão</span>
+          <span class="si-time">45 s</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Mostrar que diagnosticar é só o primeiro passo.</strong> Enquanto os contatos não forem avaliados, a cadeia de transmissão continua. O ouvinte precisa encarar a busca ativa como parte inseparável do diagnóstico.</p>
+        </div>
+
+        <div class="si-why si-why-p3">
+          <strong>Por que isso funciona:</strong> O visual da rede — um caso central vermelho com linhas irradiando para todos os contatos — comunica imediatamente que o diagnóstico de um abre a responsabilidade sobre muitos. A metáfora do "círculo aberto" é poderosa: enquanto os contatos não foram avaliados, o caso central continua pulsando.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="fala">
+          <strong>"Diagnosticou. Tratou. Acabou?"</strong> <span class="pause">pausa</span> <strong>"Não."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Olha esse caso central vermelho. Ele vai ficar pulsando enquanto os contatos não forem avaliados."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Todo contato intradomiciliar dos últimos 5 anos. Examina todos — avaliação dermatoneurológica completa."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"BCG: uma dose se não tem cicatriz anterior. Segunda dose se tem uma cicatriz. Não revacinamos quem já tem duas cicatrizes."</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Quimioprofilaxia pós-exposição — PEP-1: rifampicina 600 mg dose única para contatos com 2 anos ou mais."</strong> <span class="pause">pausa</span> <strong>"Uma dose. Grátis. No SUS. É uma das intervenções de saúde pública mais custo-efetivas que existem."</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-blue">Aponte para o caso central vermelho</span>
+          <span class="dtag dtag-green">Tom de checklist — direto e seguro</span>
+          <span class="dtag dtag-gold">"Uma dose. Grátis. No SUS." — três afirmações curtas têm peso</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 14 -->
+      <div class="slide-item reveal">
+        <span class="slide-num-big">14</span>
+        <div class="si-head">
+          <span class="si-num si-num-p3">Slide 14</span>
+          <span class="si-title">Síntese e encerramento</span>
+          <span class="si-time">45 s</span>
+        </div>
+
+        <div class="si-obj">
+          <p class="si-obj-label">Objetivo</p>
+          <p class="si-obj-text"><strong>Ancorar com uma frase que vai ser lembrada para sempre.</strong> O ouvinte deve sair com uma frase na cabeça que resume tudo — e que pode usar para ensinar outra pessoa amanhã.</p>
+        </div>
+
+        <div class="si-why si-why-p3">
+          <strong>Por que isso funciona:</strong> O efeito de recência — lembramos do que foi dito por último — é um dos fenômenos mais robustos da psicologia da memória. A última frase de uma apresentação recebe atenção desproporcional. Quando ela é construída com cuidado — ritmo, brevidade, verdade — ela funciona como tag de memória que ativa tudo o que veio antes.
+        </div>
+
+        <p class="si-script-label">Script completo — fale exatamente assim</p>
+
+        <div class="delivery">
+          <strong>Apareça o slide com os 7 ícones. Percorra-os brevemente com gesto.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Sete ícones. Sete coisas para levar daqui."</strong>
+        </div>
+
+        <div class="delivery">
+          <strong>Fale cada item em ritmo de lista — rápido, confiante, sem parar para explicar.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Diagnóstico clínico — um dos três cardinais. Mácula hipoestésica é hanseníase até prova em contrário. PB ou MB — na dúvida, MB. PQT-U três drogas — seis ou doze meses. Reação tipo 1: prednisona. Reação tipo 2: talidomida — nunca em grávida. Contatos mais BCG mais PEP-1."</strong>
+        </div>
+
+        <div class="delivery">
+          <strong>Pausa longa. Olhe para a sala inteira. Respire. Fale a próxima frase mais devagar do que qualquer outra coisa que você falou hoje.</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"E se ficou só uma frase —"</strong> <span class="pause">pausa</span>
+        </div>
+
+        <div class="fala">
+          <strong>"Hanseníase é uma doença de pele com diagnóstico no nervo, tratada com três drogas e curada com tempo."</strong> <span class="pause">pausa longa</span>
+        </div>
+
+        <div class="delivery">
+          <strong>Não diga mais nada. Deixe a frase existir em silêncio por 3 segundos. Depois, simplesmente:</strong>
+        </div>
+
+        <div class="fala">
+          <strong>"Perguntas?"</strong>
+        </div>
+
+        <div class="delivery-tags">
+          <span class="dtag dtag-red">A frase final — diga mais devagar que tudo</span>
+          <span class="dtag dtag-gold">Silêncio de 3s após a frase final — não explique</span>
+          <span class="dtag dtag-blue">Olhe para a sala inteira antes de perguntar</span>
+          <span class="dtag dtag-green">Não resuma o que já foi dito — confiança</span>
+        </div>
+
+        <div class="alert-box">
+          <strong>Erro mais comum no encerramento:</strong> dizer "é isso, obrigado" ou resumir tudo de novo. A última frase precisa ser a frase memorável — não um agradecimento. "Obrigado" pode vir depois das perguntas.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     TRANSIÇÕES
+══════════════════════════════════════════════ -->
+<section class="section reveal" id="transicoes">
+  <p class="section-kicker">Colaboração</p>
+  <h2 class="section-title">Como fazer transições que não quebram o ritmo</h2>
+  <p class="section-lead">A passagem de um apresentador para outro é o momento de maior risco em uma apresentação a três. Ensaiem as transições especificamente — elas valem tanto quanto o conteúdo.</p>
+
+  <div class="grid3">
+    <div class="g3-card reveal">
+      <span class="g3-icon">🎬</span>
+      <h3 class="g3-title">Regra do "gancho de saída"</h3>
+      <p class="g3-body">O apresentador que sai <strong>sempre planta antecipação</strong> sobre o que vem. "Os próximos vão construir em cima disso." "O que vem agora é ainda mais dramático." Isso mantém a tensão narrativa.</p>
+    </div>
+    <div class="g3-card reveal">
+      <span class="g3-icon">⏸️</span>
+      <h3 class="g3-title">Pausa de 1 segundo</h3>
+      <p class="g3-body">Quem entra precisa dar <strong>1 segundo de pausa</strong> antes de começar. Esse silêncio sinaliza a mudança sem ruptura. A plateia "reseta" a atenção — é como um parágrafo novo em um texto.</p>
+    </div>
+    <div class="g3-card reveal">
+      <span class="g3-icon">📐</span>
+      <h3 class="g3-title">Tom diferente, não conteúdo diferente</h3>
+      <p class="g3-body">Cada apresentador tem um tom: Apres. 1 = emotivo/grave. Apres. 2 = técnico/clínico. Apres. 3 = resolutivo/impactante. <strong>O conteúdo flui — o tom muda.</strong> Isso cria variação sem quebrar a narrativa.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:2rem;">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Transição</th>
+            <th>Frase de saída (quem vai)</th>
+            <th>Comportamento (quem entra)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Apres. 1 → Apres. 2</strong></td>
+            <td>"Os próximos colegas vão construir o raciocínio clínico em cima disso."</td>
+            <td>Avança, 1s pausa, começa: "O diagnóstico de hanseníase é clínico."</td>
+          </tr>
+          <tr>
+            <td><strong>Apres. 2 → Apres. 3</strong></td>
+            <td>"O colega vai agora falar sobre como tratar — começando com a PQT de 2021 e a segunda reação, que é ainda mais dramática."</td>
+            <td>Avança, 1s pausa, começa: "Tratamento."</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     ERROS COMUNS
+══════════════════════════════════════════════ -->
+<section class="section reveal" id="erros">
+  <p class="section-kicker">O que evitar</p>
+  <h2 class="section-title">Erros que destroem apresentações médicas</h2>
+  <p class="section-lead">Esses erros ocorrem em mais de 80% das apresentações de residência. Cada um tem um custo específico para a atenção do ouvinte.</p>
+
+  <div style="display:flex; flex-direction:column; gap:0.75rem;">
+    <div class="error-item reveal">
+      <div class="error-item-bar"></div>
+      <div class="error-content">
+        <p class="error-title">Ler o slide em voz alta</p>
+        <p class="error-body">O ouvinte lê mais rápido do que você fala. Quando você lê, ele já terminou, ficou esperando e começou a checar o celular. A leitura de slide também sinaliza que o apresentador não domina o conteúdo.</p>
+        <p class="error-fix">O slide é âncora visual. Sua voz carrega o que NÃO está na tela. Se o slide pode ser entendido sem você, você é dispensável.</p>
+      </div>
+    </div>
+    <div class="error-item reveal">
+      <div class="error-item-bar"></div>
+      <div class="error-content">
+        <p class="error-title">Pular rápido pelo caso clínico</p>
+        <p class="error-body">O caso clínico parece introdução mas é o coração da apresentação. É ele que ativa a amígdala. Sem ele, todo conteúdo que vem depois é informação fria.</p>
+        <p class="error-fix">O slide 2 recebe 1 minuto 30 segundos — mais do que qualquer slide de conteúdo. Desacelere nele.</p>
+      </div>
+    </div>
+    <div class="error-item reveal">
+      <div class="error-item-bar"></div>
+      <div class="error-content">
+        <p class="error-title">Tom uniforme do início ao fim</p>
+        <p class="error-body">O cérebro ignora estímulos constantes em 4 a 6 minutos. Voz uniforme = estímulo constante = atenção desligada.</p>
+        <p class="error-fix">Varie velocidade, volume e tom. Urgência nas reações, gravidade nas incapacidades, técnica na classificação. Cada bloco tem um tom diferente.</p>
+      </div>
+    </div>
+    <div class="error-item reveal">
+      <div class="error-item-bar"></div>
+      <div class="error-content">
+        <p class="error-title">Transição burocrática entre apresentadores</p>
+        <p class="error-body">"Agora vou passar a palavra para a colega Fulana que vai falar sobre tratamento" — isso quebra a narrativa e denuncia que a apresentação não foi ensaiada como uma unidade coesa.</p>
+        <p class="error-fix">Use frases de gancho narrativo. "O que vem agora é ainda mais dramático." Quem entra em seguida usa o gancho e continua a história.</p>
+      </div>
+    </div>
+    <div class="error-item reveal">
+      <div class="error-item-bar"></div>
+      <div class="error-content">
+        <p class="error-title">Não usar silêncio</p>
+        <p class="error-body">Preencher cada pausa com "né?", "então", "certo?", "como eu disse" é um vício que dilui a atenção e sinaliza insegurança.</p>
+        <p class="error-fix">Pausa de 2 a 3 segundos após dado crítico é técnica, não erro. "GI 2 é irreversível." [silêncio]. Esse silêncio é mais poderoso do que qualquer explicação adicional.</p>
+      </div>
+    </div>
+    <div class="error-item reveal">
+      <div class="error-item-bar"></div>
+      <div class="error-content">
+        <p class="error-title">Terminar sem frase memorável</p>
+        <p class="error-body">"É isso, pessoal, obrigado" desperdiça o efeito de recência — o fenômeno pelo qual lembramos desproporcionalmente do que foi dito por último.</p>
+        <p class="error-fix">A última frase do Apresentador 3 é a mais ensaiada de toda a apresentação. "Hanseníase é uma doença de pele com diagnóstico no nervo, tratada com três drogas e curada com tempo." Depois: silêncio. Depois: "Perguntas?"</p>
+      </div>
+    </div>
+    <div class="error-item reveal">
+      <div class="error-item-bar"></div>
+      <div class="error-content">
+        <p class="error-title">Não ensaiar as transições especificamente</p>
+        <p class="error-body">Grupos ensaiam o conteúdo de cada um mas nunca a passagem de um para outro. No dia, essa passagem fica estranha, hesitante, e quebra toda a credibilidade construída até ali.</p>
+        <p class="error-fix">Ensaie a apresentação do início ao fim pelo menos duas vezes completas — não cada parte isolada. As transições precisam ser fluidas como mudança de parágrafo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     PREPARAÇÃO
+══════════════════════════════════════════════ -->
+<section class="section reveal" id="preparacao">
+  <p class="section-kicker">Antes de subir</p>
+  <h2 class="section-title">Preparação — individual e em grupo</h2>
+  <p class="section-lead">A apresentação começa na noite anterior, não quando o primeiro slide aparece. Use este cronograma.</p>
+
+  <div class="grid2" style="margin-bottom:2rem;">
+    <div class="g2-card reveal">
+      <p class="g2-label">Individual — cada apresentador</p>
+      <ul class="checklist">
+        <li><strong>Leia o script em voz alta</strong> pelo menos 3 vezes — não na cabeça, em voz alta</li>
+        <li><strong>Cronometre cada slide</strong> — nenhum deve passar do tempo alocado</li>
+        <li><strong>Memorize suas frases-âncora</strong> específicas</li>
+        <li><strong>Pratique os gestos</strong> — onde vai apontar, quando vai se mover</li>
+        <li><strong>Prepare resposta</strong> para a pergunta mais difícil do seu bloco</li>
+      </ul>
+    </div>
+    <div class="g2-card reveal">
+      <p class="g2-label">Em grupo — os três juntos</p>
+      <ul class="checklist">
+        <li><strong>Apresentação completa cronometrada</strong> pelo menos 2 vezes</li>
+        <li><strong>Ensaiar as transições</strong> especificamente — não só o conteúdo</li>
+        <li><strong>Definir quem fica onde</strong> no espaço físico durante cada bloco</li>
+        <li><strong>Combinar sinal silencioso</strong> para "estou precisando de ajuda" ou "acelera"</li>
+        <li><strong>Testar projetor + arquivo</strong> no local se possível</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="prep-timeline">
+    <div class="ptl-item reveal">
+      <p class="ptl-when">3 dias antes</p>
+      <p class="ptl-title">Cada um lê o roteiro completo — não só o próprio bloco</p>
+      <p class="ptl-body">Entender o que os outros falam é essencial para que as transições façam sentido. <strong>Você não pode criar gancho narrativo para o próximo se não sabe o que ele vai falar.</strong></p>
+    </div>
+    <div class="ptl-item reveal">
+      <p class="ptl-when">2 dias antes</p>
+      <p class="ptl-title">Ensaio em grupo — primeira vez completo</p>
+      <p class="ptl-body">Grave em áudio ou vídeo se possível. Identifique onde a narrativa quebra, onde alguém acelera demais, onde as transições soam artificiais. <strong>Veja o tempo total — precisa ficar em 15 minutos.</strong></p>
+    </div>
+    <div class="ptl-item reveal">
+      <p class="ptl-when">1 dia antes</p>
+      <p class="ptl-title">Ajustes e segundo ensaio completo</p>
+      <p class="ptl-body">Corrija o que foi identificado. Segundo ensaio completo. <strong>A apresentação precisa parecer fluida, não decorada.</strong> Conteúdo dominado = liberdade para contato visual com a plateia.</p>
+    </div>
+    <div class="ptl-item reveal">
+      <p class="ptl-when">No dia — 30 min antes</p>
+      <p class="ptl-title">Setup técnico e aquecimento</p>
+      <p class="ptl-body">Teste projetor. Arquivo em fullscreen. Cada um bebe água. Posicionem-se no espaço. <strong>5 respirações profundas antes de começar — reduz cortisol, melhora dicção e memória de trabalho em condições de estresse.</strong></p>
+    </div>
+    <div class="ptl-item reveal">
+      <p class="ptl-when">No dia — 5 min antes</p>
+      <p class="ptl-title">Revisão das frases-âncora</p>
+      <p class="ptl-body">Cada um fala sua frase mais importante em voz baixa. Apres. 1: "A doença mais antiga — segundo lugar do mundo." Apres. 2: "Basta um dos três. Bk negativo não exclui." Apres. 3: "Doença de pele, diagnóstico no nervo, três drogas, tempo."</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     PERGUNTAS
+══════════════════════════════════════════════ -->
+<section class="section reveal" id="perguntas">
+  <p class="section-kicker">Pós-apresentação</p>
+  <h2 class="section-title">Como responder perguntas difíceis</h2>
+  <p class="section-lead">A sessão de perguntas é parte da apresentação. Quem responde não precisa ser sempre o mesmo. Divida por área de competência de cada apresentador.</p>
+
+  <div class="grid2" style="margin-bottom: 2rem;">
+    <div class="g2-card reveal">
+      <p class="g2-label">Regra de ouro da Q&A</p>
+      <p class="g2-body"><strong>Nunca improvise em medicina.</strong> Se não souber, diga: <em>"Boa pergunta — não tenho certeza sobre esse detalhe específico. Vou conferir no PCDT 2023 e te dou a resposta."</em> Isso é mais profissional do que improvisar e errar.</p>
+    </div>
+    <div class="g2-card reveal">
+      <p class="g2-label">Quem responde o quê</p>
+      <p class="g2-body">Apresentador 1: perguntas sobre epidemiologia, transmissão, agente, fisiopatologia.<br>Apresentador 2: perguntas sobre diagnóstico, classificação, nervos, reação T1.<br>Apresentador 3: perguntas sobre PQT, reação T2, incapacidades, contatos.</p>
+    </div>
+  </div>
+
+  <div class="qa-item reveal">
+    <div class="qa-q">Como diferencio hanseníase de outras neuropatias periféricas?</div>
+    <div class="qa-a">
+      <p class="qa-a-label">Resposta recomendada</p>
+      <p class="qa-resp">
+        <strong>"Boa diferenciação clínica."</strong> O que orienta é a combinação de três elementos que, juntos, são praticamente específicos de hanseníase: <strong>lesão cutânea hipopigmentada ou eritematosa com alteração de sensibilidade</strong>, associada a <strong>espessamento de tronco nervoso periférico palpável</strong>, em <strong>área geográfica compatível</strong>. Neuropatia diabética, por exemplo, cursa com padrão em luva e meia, simétrico, sem lesão cutânea característica e sem espessamento de nervos tronculares palpáveis. Síndrome de Guillain-Barré é aguda e ascendente, sem lesão de pele. A assimetria do acometimento neural e o contexto epidemiológico são os grandes diferenciadores.
+      </p>
+    </div>
+  </div>
+
+  <div class="qa-item reveal">
+    <div class="qa-q">Se a baciloscopia é negativa, como confirmo paucibacilar?</div>
+    <div class="qa-a">
+      <p class="qa-a-label">Resposta recomendada</p>
+      <p class="qa-resp">
+        <strong>"Essa é a armadilha mais clássica."</strong> Paucibacilar é <em>definido</em> com baciloscopia negativa — portanto, ela não confirma nem exclui. O diagnóstico é <strong>clínico</strong>: basta uma lesão com alteração de sensibilidade, ou um nervo espessado com déficit funcional. Em casos duvidosos, a biópsia cutânea pode ser solicitada para demonstrar granuloma e BAAR no nervo ou na derme. Mas na Atenção Primária, com quadro clínico compatível, biópsia não é obrigatória. O PCDT 2023 afirma explicitamente que o diagnóstico clínico é suficiente.
+      </p>
+    </div>
+  </div>
+
+  <div class="qa-item reveal">
+    <div class="qa-q">Qual a diferença prática entre a classificação de Ridley-Jopling e a operacional?</div>
+    <div class="qa-a">
+      <p class="qa-a-label">Resposta recomendada</p>
+      <p class="qa-resp">
+        <strong>"Pergunta muito pertinente."</strong> Ridley-Jopling é uma classificação <strong>patológica e acadêmica</strong> — cinco formas baseadas na resposta imune e histopatologia, usada para entender o espectro e discutir mecanismos de doença e reações. A operacional da OMS é <strong>prática e terapêutica</strong> — duas categorias definidas por critérios simples de contar lesões e ver baciloscopia. É a operacional que define se o paciente recebe 6 ou 12 doses de PQT-U. Na prática clínica diária, você usa a operacional. Ridley-Jopling é essencial para entender por que certos pacientes fazem reações e outros não.
+      </p>
+    </div>
+  </div>
+
+  <div class="qa-item reveal">
+    <div class="qa-q">Por que o Brasil não eliminou hanseníase se o tratamento é eficaz e gratuito?</div>
+    <div class="qa-a">
+      <p class="qa-a-label">Resposta recomendada</p>
+      <p class="qa-resp">
+        <strong>"Pergunta de saúde pública fundamental."</strong> A eliminação falhou não por falta de droga — a PQT é gratuita, disponível no SUS, extremamente eficaz, com taxa de recidiva menor de 2%. Ela falhou por <strong>diagnóstico tardio</strong>, subnotificação, abandono de tratamento e acesso desigual. O período de incubação de 2 a 7 anos permite que a transmissão ocorra por anos antes de qualquer sintoma. Além disso, o estigma histórico da lepra levou muitos pacientes a esconder a doença e muitos profissionais a não pesquisar. A solução está em diagnóstico precoce, busca ativa de contatos, quimioprofilaxia e — fundamentalmente — profissionais que saibam palpar um nervo periférico.
+      </p>
+    </div>
+  </div>
+
+  <div class="qa-item reveal">
+    <div class="qa-q">A clofazimina causa pigmentação permanente?</div>
+    <div class="qa-a">
+      <p class="qa-a-label">Resposta recomendada</p>
+      <p class="qa-resp">
+        <strong>"Boa pergunta prática."</strong> A pigmentação cutânea marrom-avermelhada causada pela clofazimina é <strong>reversível</strong>, mas lenta. Pode levar meses a anos para regredir completamente após a suspensão do medicamento. O paciente precisa ser informado antes de iniciar o tratamento para que não interprete a pigmentação como piora e abandone a PQT. Estudos mostram que a não informação prévia sobre essa mudança de cor é uma das causas mais frequentes de abandono de tratamento em mulheres jovens, especialmente por impacto na autoestima. A orientação adequada faz parte do protocolo.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Guia de Apresentação · Hanseníase · 3 Apresentadores</strong></p>
+  <p>Conteúdo baseado no PCDT Hanseníase 2023 · Ministério da Saúde · WHO Leprosy Guidelines 2018</p>
+  <p style="margin-top: 0.35rem; opacity: 0.5;">Para uso educacional · Nível residência médica</p>
+</footer>
+
+<script>
+/* ── Scroll reveal ── */
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.05 });
+revealEls.forEach(el => io.observe(el));
+
+/* ── TOC dots ── */
+const sections = ['hero','divisao','apresentador1','apresentador2','apresentador3','transicoes','erros','preparacao','perguntas'];
+const dots = document.querySelectorAll('.ts-dot');
+
+function updateToc() {
+  let active = 0;
+  sections.forEach((id, i) => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY + 120 >= el.offsetTop) active = i;
+  });
+  dots.forEach((d, i) => d.classList.toggle('active', i === active));
+}
+
+dots.forEach((d, i) => {
+  d.addEventListener('click', () => {
+    const el = document.getElementById(sections[i]);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+window.addEventListener('scroll', updateToc, { passive: true });
+
+/* ── fala tag custom ── */
+// corrigir tag não-padrão <fala> nos slides
+document.querySelectorAll('fala').forEach(el => {
+  const div = document.createElement('div');
+  div.className = 'fala';
+  div.innerHTML = el.innerHTML;
+  el.parentNode.replaceChild(div, el);
+});
+</script>
+</body>
+</html>
